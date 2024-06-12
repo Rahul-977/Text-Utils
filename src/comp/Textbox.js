@@ -25,12 +25,12 @@ const [text, setText] = useState("Enter text here");
         <div className="mb-3">
          <textarea style = {{ backgroundColor: props.mode === 'dark' ? 'grey':'white'}} className="form-control" value = {text} onChange={HandleonChange} id="myBox" rows="9"></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary mx-2" onClick={handleLoClick }>Convert to LowerCase</button>
-        <button className="btn btn-primary" onClick={ clearText }>Clear Text</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick }>Convert to LowerCase</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={ clearText }>Clear Text</button>
 
         <h2>Text Summary</h2>
-        <p>{text.trim().split(' ').length} words and {text.length} characters</p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length !== 0}).length} words and {text.length} characters</p>
     </div>
   )
 }
